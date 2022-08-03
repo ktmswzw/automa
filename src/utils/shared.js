@@ -26,6 +26,7 @@ export const tasks = {
       days: [],
       contextMenuName: '',
       contextTypes: [],
+      parameters: [],
       observeElement: {
         selector: '',
         baseSelector: '',
@@ -468,7 +469,7 @@ export const tasks = {
     outputs: 1,
     allowedInputs: true,
     maxConnection: 1,
-    refDataKeys: ['selector', 'value'],
+    refDataKeys: ['selector', 'value', 'optionPosition'],
     autocomplete: ['variableName'],
     data: {
       disableBlock: false,
@@ -484,6 +485,8 @@ export const tasks = {
       getValue: false,
       saveData: false,
       dataColumn: '',
+      selectOptionBy: 'value',
+      optionPosition: '1',
       assignVariable: false,
       variableName: '',
       type: 'text-field',
@@ -684,12 +687,13 @@ export const tasks = {
     allowedInputs: true,
     maxConnection: 1,
     refDataKeys: [
+      'maxLoop',
       'loopData',
       'variableName',
       'referenceKey',
       'elementSelector',
     ],
-    autocomplete: ['variableName', 'loopId', 'maxLoop'],
+    autocomplete: ['variableName', 'loopId'],
     data: {
       disableBlock: false,
       loopId: '',
@@ -1123,8 +1127,11 @@ export const tasks = {
     outputs: 1,
     allowedInputs: true,
     maxConnection: 1,
+    refDataKeys: ['replaceVal'],
     data: {
       disableBlock: false,
+      method: 'match',
+      replaceVal: '',
       description: '',
       expression: '',
       flag: [],
@@ -1177,6 +1184,33 @@ export const tasks = {
       variableName: '',
     },
   },
+  'create-element': {
+    name: 'Create element',
+    description: 'Create an element and insert it into the page',
+    icon: 'riHtml5Line',
+    editComponent: 'EditCreateElement',
+    component: 'BlockBasic',
+    category: 'interaction',
+    inputs: 1,
+    outputs: 1,
+    allowedInputs: true,
+    maxConnection: 1,
+    refDataKeys: ['html', 'css'],
+    data: {
+      disableBlock: false,
+      description: '',
+      javascript: '',
+      html: '',
+      css: '',
+      preloadScripts: [],
+      elementWrapper: 'div',
+      findBy: 'cssSelector',
+      insertAt: 'after',
+      waitForSelector: false,
+      waitSelectorTimeout: 5000,
+      selector: 'body',
+    },
+  },
 };
 
 export const categories = {
@@ -1212,6 +1246,11 @@ export const categories = {
     border: 'border-blue-200 dark:border-blue-300',
     color: 'bg-blue-200 dark:bg-blue-300 fill-blue-200 dark:fill-blue-300',
   },
+};
+
+export const tagColors = {
+  stage: 'bg-yellow-200 dark:bg-yellow-300',
+  production: 'bg-green-200 dark:bg-green-300',
 };
 
 export const eventList = [
